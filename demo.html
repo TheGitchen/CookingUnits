@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="utf-8">
+        <title>Ingredient Demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+		<h1>Ingredient Converter Demo</h1>
+        <div id="results"></div>
+		<script src="cooking_units.js"></script>
+		<script>
+
+			var results = "";
+
+      // convert 34 tsp to tbsp
+			var a = CookingUnits.convert(34, "tsp", "tbsp");
+      // convert the number to a fraction string
+			results += "34 tsp is " + CookingUnits.fraction(a) + " tbsp<br/>";
+
+			var b = CookingUnits.convert(300, "ml", "l") ;
+			results += "300 mL is " + b.toFixed(3) + " L<br/>";
+
+			var c = CookingUnits.convert(32.54, "gal", "ml");
+			results += "32.54 gallons is " + c.toFixed(1)  + " mL<br/>";
+
+
+      // now let's convert btw weight and volume.
+      // for instance, flour has a density of 0.59911
+      
+      var d = CookingUnits.convert(20, "oz", "c", 0.59911);
+      // convert the number to a fraction string
+      results += "20 oz. flour is " + CookingUnits.fraction(d) + " cups<br/>";
+
+      var e = CookingUnits.convert(4.5, "c", "oz", 0.59911);
+      // convert the number to a fraction string
+      results += "4.5 cups flour is " + CookingUnits.fraction(e) + " oz.<br/>";
+
+
+			document.querySelector("#results").innerHTML = results;
+
+		</script>
+    </body>
+</html>
